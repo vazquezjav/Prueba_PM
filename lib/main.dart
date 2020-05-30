@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -57,6 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void goEmpezar() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -92,20 +97,28 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Prueba PM',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            RaisedButton(
+                color: Colors.blue,
+                child: Text('Empezar'),
+                onPressed: () {
+                  go(context);
+                }),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: goEmpezar,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+  void go(BuildContext context) {
+    //_saveData(context);
+    
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Login()));
   }
 }
